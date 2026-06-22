@@ -22,6 +22,7 @@ sudo pacman --noconfirm -Sy \
 	edk2-shell \
 	mtools \
 	isomd5sum \
+	doublecmd-qt5 \
 	base-devel
 
 # Get ddrescueview
@@ -34,7 +35,7 @@ if [[ ! -d gtk2 ]]; then
 	git clone https://aur.archlinux.org/packages/gtk2.git
 fi
 cd gtk2
-if [[  ! -e ./pkg/gtk2/usr/lib/libgdk-x11-2.0.so.0.* ]] || [[ -e ./pkg/gtk2/usr/lib/libgtk-x11-2.0.so.0.* ]]; then
+if [[  ! -e $(echo ./pkg/gtk2/usr/lib/libgdk-x11-2.0.so.0.*) -o ! -e $(echo ./pkg/gtk2/usr/lib/libgtk-x11-2.0.so.0.*) ]]; then
 	makepkg -sf --noconfirm
 fi
 cp -v ./pkg/gtk2/usr/lib/libgdk-x11-2.0.so.0.* ../systemrescue-sources/airootfs/usr/lib/libgdk-x11-2.0.so.0
