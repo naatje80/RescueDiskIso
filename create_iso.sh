@@ -22,7 +22,6 @@ sudo pacman --noconfirm -Sy \
 	edk2-shell \
 	mtools \
 	isomd5sum \
-	doublecmd-qt5 \
 	base-devel
 
 # Get ddrescueview
@@ -101,6 +100,7 @@ echo "conky
 python-pillow
 libatasmart
 cpu-x
+doublecmd-qt5
 " >>packages
 
 
