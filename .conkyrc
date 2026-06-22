@@ -1,0 +1,66 @@
+conky.config = {
+    -- Venster instellingen
+    alignment = 'top_right',
+    background = false,
+    border_width = 1,
+    cpu_avg_samples = 2,
+    default_color = 'white',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    use_xft = true,
+    font = 'DejaVu Sans Mono:size=10',
+    gap_x = 30,
+    gap_y = 60,
+    minimum_height = 5,
+    minimum_width = 180,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_type = 'desktop',
+    own_window_transparent = true,
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    stippled_borders = 0,
+    update_interval = 1.0,
+    uppercase = false,
+    use_spacer = 'none',
+    show_graph_scale = false,
+    show_range_scale = false,
+
+    color0 = '8c8c8c',
+    color1 = 'ffb400', -- Gold/orange
+    color2 = '33b5e5', -- Blue
+}
+
+conky.text = [[
+${color0}${font DejaVu Sans Mono:bold:size=10}SYSTEM INFORMATION ${hr 2}
+${color1}Hostname:${color} $nodename
+${color1}Uptime:${color}   $uptime
+${color1}Kernel:${color}   $kernel
+
+${color0}PROCESSOR ${hr 2}
+${color1}Frequency:${color}  $freq_g GHz
+${color1}Usage:${color}      $cpu% ${cpubar 4,125}
+${color1}Processes:${color}  $processes (${color2}running: $running_processes${color})
+
+${color0}MEMORY ${hr 2}
+${color1}RAM Used:${color}   $mem ($memperc%) ${membar 4,125}
+${color1}RAM Free:${color}   $memeasyfree
+${color1}Swap Used:${color}  $swap
+
+${color0}STORAGE ${hr 2}
+${color1}Root:${color}       ${fs_used /}/${fs_size /} ${fs_bar 4,125 /}
+${color1}Home:${color}       ${fs_used /home}/${fs_size /home} ${fs_bar 4,125 /home}
+
+${color0}NETWORK ${hr 2}
+${color1}Down:${color} ${downspeed eth0} ${alignr}${color1}Up:${color} ${upspeed eth0}
+${color1}Total:${color} ${totaldown eth0} ${alignr}${color1}Total:${color} ${totalup eth0}
+]]

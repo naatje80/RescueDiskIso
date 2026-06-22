@@ -1,0 +1,23 @@
+diff --color -Naur crazydiskinfo_org/CMakeLists.txt crazydiskinfo/CMakeLists.txt
+--- crazydiskinfo_org/CMakeLists.txt	2026-06-22 11:40:29.819054502 +0200
++++ crazydiskinfo/CMakeLists.txt	2026-06-22 11:40:44.485280471 +0200
+@@ -5,6 +5,6 @@
+ set(CMAKE_CXX_FLAGS "-Wall -std=c++11")
+ SET_TARGET_PROPERTIES(CrazyDiskInfo PROPERTIES OUTPUT_NAME crazy)
+ target_link_libraries(CrazyDiskInfo atasmart)
+-target_link_libraries(CrazyDiskInfo tinfow)
++target_link_libraries(CrazyDiskInfo tinfo)
+ target_link_libraries(CrazyDiskInfo ncursesw)
+ INSTALL(TARGETS CrazyDiskInfo RUNTIME DESTINATION /usr/sbin)
+diff --color -Naur crazydiskinfo_org/main.cpp crazydiskinfo/main.cpp
+--- crazydiskinfo_org/main.cpp	2026-06-22 11:40:29.819054502 +0200
++++ crazydiskinfo/main.cpp	2026-06-22 11:40:51.389446226 +0200
+@@ -34,7 +34,7 @@
+ 	Option()
+ 	:
+ 	hideSerial(false),
+-	isRawHex(true)
++	isRawHex(false)
+ 	{
+ 	}
+ };
