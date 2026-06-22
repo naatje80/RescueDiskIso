@@ -10,4 +10,4 @@ Create free PartedMagic alternative based on systemrescuedisk.
 3. Enter the container: `distrobox enter --root RescueDiskIsoBuild`
 4. Navigate to the repo.
 5. Generate the iso: `./create_iso.sh`
-6. To insure a proper new build, remove the following old directories first: `sudo rm -rf systemrescue-sources/work systemrescue-sources/out`
+6. To ensure a proper new build, remove the following old directories first: `sudo rm -rf systemrescue-sources/work systemrescue-sources/out`
