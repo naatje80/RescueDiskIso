@@ -2,7 +2,7 @@
 
 set -e
 
-DEBUG=1
+DEBUG=0
 
 sudo pacman --noconfirm -Sy git
 
@@ -21,12 +21,25 @@ sudo pacman --noconfirm -Sy \
 	hugo \
 	edk2-shell \
 	mtools \
-	isomd5sum
+	isomd5sum \
+	base-devel
 
 # Get ddrescueview
 if [[ ! -e ddrescueview ]]; then
 	./download_ddrescueview.sh
 fi
+
+# GTK2 package is no longer available, compiling from aur source package
+if [[ ! -d gtk2 ]]; then
+	git clone https://aur.archlinux.org/packages/gtk2.git
+fi
+cd gtk2
+if [[  ! -e ./pkg/gtk2/usr/lib/libgdk-x11-2.0.so.0.* ]] || [[ -e ./pkg/gtk2/usr/lib/libgtk-x11-2.0.so.0.* ]]; then
+	makepkg -sf --noconfirm
+fi
+cp -v ./pkg/gtk2/usr/lib/libgdk-x11-2.0.so.0.* ../systemrescue-sources/airootfs/usr/lib/libgdk-x11-2.0.so.0
+cp -v ./pkg/gtk2/usr/lib/libgtk-x11-2.0.so.0.* ../systemrescue-sources/airootfs/usr/lib/libgtk-x11-2.0.so.0
+cd ..
 
 # Get crazy disk info
 if [[ ! -e crazydiskinfo/crazy ]]; then
